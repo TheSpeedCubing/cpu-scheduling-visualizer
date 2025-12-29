@@ -17,20 +17,20 @@ public class Main {
     public static void main(String[] args) {
         MainUI ui = new MainUI();
 
-        CompletableFuture<List<Proc>> future = new InputUI(ui).display();
-        List<Proc> processes;
+        CompletableFuture<InputUI.InputResult> future = new InputUI(ui).display();
+        InputUI.InputResult inputResult;
         try {
-            processes = future.get();
+            inputResult = future.get();
         } catch (InterruptedException | ExecutionException ex) {
             ex.printStackTrace();
             return;
         }
 
         new ResultUI(ui).display(
-                new FCFS().handle(processes),
-                new SJF().handle(processes),
-                new SRJF().handle(processes),
-                new Priority().handle(processes),
-                new RR().handle(processes, 20));
+                new FCFS().handle(inputResult.procList()),
+                new SJF().handle(inputResult.procList()),
+                new SRJF().handle(inputResult.procList()),
+                new Priority().handle(inputResult.procList()),
+                new RR().handle(inputResult.procList(), inputResult.quantum()));
     }
 }

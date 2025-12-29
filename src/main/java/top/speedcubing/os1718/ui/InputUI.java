@@ -19,11 +19,13 @@ import top.speedcubing.os1718.ui.input.ProcTablePanel;
 @AllArgsConstructor
 public class InputUI {
 
+    public static record InputResult(List<Proc> procList, int quantum){}
+
     private final JFrame frame;
 
-    public CompletableFuture<List<Proc>> display() {
+    public CompletableFuture<InputResult> display() {
 
-        CompletableFuture<List<Proc>> future = new CompletableFuture<>();
+        CompletableFuture<InputResult> future = new CompletableFuture<>();
 
         PastePanel pastePanel = new PastePanel();
         ProcTablePanel tablePanel = new ProcTablePanel();
@@ -35,8 +37,13 @@ public class InputUI {
 
         controlPanel.runBtn.addActionListener(e -> {
             try {
-                List<Proc> result = new ArrayList<>();
+                List<Proc> procList = new ArrayList<>();
                 Set<Integer> pidSet = new HashSet<>();
+
+                int quantum = controlPanel.getQuantum();
+                if (quantum <= 0) {
+                    throw new IllegalArgumentException("Quantum must be > 0");
+                }
 
                 var model = tablePanel.getModel();
 
@@ -53,11 +60,11 @@ public class InputUI {
                         throw new IllegalArgumentException("Arrival time must be >= 0 (PID=" + pid + ")");
                     }
 
-                    result.add(new Proc(pid, at, bt, prior));
+                    procList.add(new Proc(pid, at, bt, prior));
                 }
 
                 SwingUtilities.invokeLater(() -> {
-                    future.complete(result);
+                    future.complete(new InputResult(procList, quantum));
                     frame.getContentPane().removeAll();
                     frame.revalidate();
                     frame.repaint();
