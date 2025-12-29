@@ -1,32 +1,35 @@
 package top.speedcubing.os1718.algorithms;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import top.speedcubing.os1718.Gantt;
-import top.speedcubing.os1718.Proc;
-import top.speedcubing.os1718.ProcInfo;
+import top.speedcubing.os1718.gantt.Gantt;
+import top.speedcubing.os1718.process.Proc;
 
-public class FCFS {
+public class FCFS extends Algorithm {
 
-    public Map<Proc, ProcInfo> info = new HashMap<>();
+    public FCFS() {
+        super("FCFS");
+    }
 
-    public FCFS(List<Proc> processList) {
+    public AlgorithmResult handle(List<Proc> procList) {
+        AlgorithmResult result = createResult(procList);
 
-        Gantt gantt = new Gantt();
 
-        int[] finish = new int[processList.size()];
-        for (int i = 0; i < processList.size(); i++) {
-            Proc p = processList.get(i);
-            if (i == 0) {
-                finish[i] = p.getTimeArrival() + p.getBurstTime();
-                gantt.addProcState(p, finish[i]);
-            } else {
-                finish[i] = finish[i - 1] + p.getBurstTime();
-                gantt.addProcState(p, finish[i]);
-            }
+        procList.sort(Comparator.comparingInt(Proc::getTimeArrival));
 
-            info.put(p, new ProcInfo(finish[i] - p.getTimeArrival() - p.getBurstTime(), finish[i] - p.getTimeArrival()));
+        int[] finish = new int[procList.size()];
+        for (int i = 0; i < procList.size(); i++) {
+            Proc p = procList.get(i);
+
+            int prev = i == 0 ? p.getTimeArrival() : finish[i - 1];
+
+            finish[i] = prev + p.getBurstTime();
+            result.getGantt().addProcState(p, prev, finish[i]);
+
+            result.getProcResult(p).setWaitTime(finish[i] - p.getTimeArrival() - p.getBurstTime());
+            result.getProcResult(p).setTurnaroundTime(finish[i] - p.getTimeArrival());
         }
+        return result;
     }
 }
