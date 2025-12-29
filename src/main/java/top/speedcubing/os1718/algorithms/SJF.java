@@ -5,6 +5,7 @@ import top.speedcubing.os1718.process.Proc;
 
 public class SJF extends Priority {
 
+    // it's priority algorithm aswell
     public SJF() {
         super("SJF", Comparator.comparingInt(Proc::getBurstTime));
     }

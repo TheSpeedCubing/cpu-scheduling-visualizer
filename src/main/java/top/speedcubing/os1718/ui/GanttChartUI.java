@@ -2,129 +2,75 @@ package top.speedcubing.os1718.ui;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.awt.Font;
+import java.util.HashSet;
+import java.util.Set;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.NumberAxis;
-import org.jfree.chart.axis.SymbolAxis;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.ValueMarker;
 import org.jfree.chart.plot.XYPlot;
-import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
-import org.jfree.data.xy.DefaultXYDataset;
+import org.jfree.chart.ui.RectangleAnchor;
+import org.jfree.chart.ui.RectangleInsets;
+import org.jfree.chart.ui.TextAnchor;
 import top.speedcubing.os1718.algorithms.AlgorithmResult;
 import top.speedcubing.os1718.gantt.Gantt;
-import top.speedcubing.os1718.process.Proc;
+import top.speedcubing.os1718.ui.gantt.GanttChartStyler;
+import top.speedcubing.os1718.ui.gantt.GanttDatasetBuilder;
 
-public class GanttChartUI {
-
-    private final List<Proc> procList;
-    private int maxStopTime = 0;
-
-    private JFreeChart chart;
+public class GanttChartUI extends ChartPanel {
 
     public GanttChartUI(AlgorithmResult result) {
-        this.procList = result.getProcList();
-
-        DefaultXYDataset dataset = new DefaultXYDataset();
-
-        Map<Integer, List<Double>> data = new TreeMap<>();
-
-        for (Gantt.GanttProcState state : result.getGantt().getProcState()) {
-            int id = state.getProc().getId();
-            if (!data.containsKey(id)) {
-                data.put(id, new ArrayList<>());
-            }
-
-            maxStopTime = Math.max(maxStopTime, state.getStopTime());
-
-            data.get(id).add((double) state.getStartTime());
-            data.get(id).add((double) state.getStopTime());
-            data.get(id).add(Double.NaN);
-        }
-
-        int yIndex = 0;
-        for (Map.Entry<Integer, List<Double>> e : data.entrySet()) {
-            int n = e.getValue().size();
-
-            double[] x = new double[n];
-            double[] y = new double[n];
-
-            for (int i = 0; i < n; i++) {
-                x[i] = e.getValue().get(i);
-                y[i] = yIndex;
-            }
-            yIndex++;
-
-            dataset.addSeries(
-                    "p_" + e.getKey(),
-                    new double[][]{x, y}
-            );
-        }
-
-        createFrame(dataset);
+        super(createChart(result));
+        setMouseWheelEnabled(false);
+        setMouseZoomable(true);
     }
 
-    public ChartPanel getPanel() {
-        return new ChartPanel(chart);
-    }
+    private static JFreeChart createChart(AlgorithmResult result) {
 
-    private void createFrame(DefaultXYDataset dataset) {
-        chart = ChartFactory.createXYLineChart(
-                "Gantt Chart",
+        GanttDatasetBuilder builder = new GanttDatasetBuilder();
+        GanttDatasetBuilder.BuildResult build = builder.build(result);
+
+        JFreeChart chart = ChartFactory.createXYLineChart(
+                result.getAlgorithm().getName(),
                 "Time",
                 "Process",
-                dataset,
+                build.dataset(),
                 PlotOrientation.VERTICAL,
                 false,
                 true,
                 false
         );
-        customizePlot(chart);
-    }
 
-    private void customizePlot(JFreeChart chart) {
+        GanttChartStyler.apply(
+                chart,
+                result.getProcList(),
+                build.maxStopTime()
+        );
+
         XYPlot plot = chart.getXYPlot();
-        XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
 
-        List<String> procNames = procList.stream()
-                .map(p -> "p_" + p.getId())
-                .toList();
+        Set<Integer> endTimes = new HashSet<>();
+        for (Gantt.GanttProcState s : result.getGantt().getProcState()) {
+            if (!endTimes.add(s.getStopTime())) continue;
 
-        SymbolAxis yAxis = new SymbolAxis("Process", procNames.toArray(new String[]{}));
-        plot.setRangeAxis(yAxis);
-        yAxis.setGridBandsVisible(false);
-        yAxis.setInverted(true);
+            int t = s.getStopTime();
 
-        int yIndex = 0;
+            ValueMarker m = new ValueMarker(t);
+            m.setPaint(new Color(180, 180, 180));
+            m.setStroke(new BasicStroke(1.0f));
+            m.setAlpha(0.8f);
 
-        Color[] colors = {Color.RED, Color.GREEN, Color.CYAN, Color.BLUE, Color.yellow};
-        int index = 0;
-        for(Proc ignored : procList) {
-            renderer.setSeriesPaint(yIndex, colors[index++]);
-            renderer.setSeriesStroke(yIndex++, new BasicStroke(6.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL));
+            m.setLabel(String.valueOf(t));
+            m.setLabelFont(new Font(Font.MONOSPACED, Font.PLAIN, 11));
+
+            m.setLabelAnchor(RectangleAnchor.TOP_LEFT);
+            m.setLabelTextAnchor(TextAnchor.BOTTOM_LEFT);
+            m.setLabelOffset(new RectangleInsets(15, 0, 0, 0));
+            plot.addDomainMarker(m);
         }
-        renderer.setDefaultShapesVisible(false);
 
-        NumberAxis xAxis = (NumberAxis) plot.getDomainAxis();
-        xAxis.setRange(0, maxStopTime);
-        xAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
-        xAxis.setAutoRangeIncludesZero(false);
-
-        // sets plot background
-        plot.setBackgroundPaint(Color.WHITE);
-
-        // grid line
-        plot.setRangeGridlinesVisible(true);
-        plot.setRangeGridlinePaint(Color.BLACK);
-
-        // grid line
-        plot.setDomainGridlinesVisible(true);
-        plot.setDomainGridlinePaint(Color.BLACK);
-
-        plot.setRenderer(renderer);
+        return chart;
     }
 }

@@ -1,20 +1,23 @@
 package top.speedcubing.os1718.ui;
 
-import java.util.Map;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import lombok.Getter;
 import top.speedcubing.os1718.algorithms.AlgorithmResult;
 import top.speedcubing.os1718.process.Proc;
-import top.speedcubing.os1718.process.ProcResult;
 
 @Getter
-public class TableUI {
-
-    private final JScrollPane jScrollPane;
+public class TableUI extends JScrollPane {
 
     public TableUI(AlgorithmResult result) {
+        JTable table = new JTable(createModel(result));
+        table.setRowHeight(22);
+        table.setFocusable(false);
+        setViewportView(table);
+    }
+
+    private DefaultTableModel createModel(AlgorithmResult result) {
 
         DefaultTableModel model = new DefaultTableModel(
                 new Object[]{
@@ -27,30 +30,22 @@ public class TableUI {
                 },
                 0
         ) {
-            @Override
-            public Class<?> getColumnClass(int column) {
-                return Integer.class;
-            }
 
-            @Override
-            public boolean isCellEditable(int row, int column) {
+            @Override public boolean isCellEditable(int r, int c) {
                 return false;
             }
         };
 
-
         for (Proc p : result.getProcList()) {
-            Integer waiting = result.getProcResult(p).getWaitTime();
-            Integer turnaround = result.getProcResult(p).getTurnaroundTime();
-
             model.addRow(new Object[]{
-                    p.getId(), p.getTimeArrival(), p.getBurstTime(), p.getPriority(), waiting, turnaround
+                    p.getId(),
+                    p.getTimeArrival(),
+                    p.getBurstTime(),
+                    p.getPriority(),
+                    result.getProcResult(p).getWaitTime(),
+                    result.getProcResult(p).getTurnaroundTime()
             });
         }
-
-        JTable table = new JTable(model);
-        table.setRowHeight(22);
-
-        this.jScrollPane = new JScrollPane(table);
+        return model;
     }
 }
