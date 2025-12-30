@@ -28,7 +28,7 @@ public class InputUI {
         CompletableFuture<InputResult> future = new CompletableFuture<>();
 
         PastePanel pastePanel = new PastePanel();
-        ProcTablePanel tablePanel = new ProcTablePanel();
+        ProcTablePanel tablePanel = new ProcTablePanel(frame);
         ControlPanel controlPanel = new ControlPanel();
 
         controlPanel.parseBtn.addActionListener(e ->
@@ -38,7 +38,6 @@ public class InputUI {
         controlPanel.runBtn.addActionListener(e -> {
             try {
                 List<Proc> procList = new ArrayList<>();
-                Set<Integer> pidSet = new HashSet<>();
 
                 int quantum = controlPanel.getQuantum();
                 if (quantum <= 0) {
@@ -52,13 +51,6 @@ public class InputUI {
                     int at = Integer.parseInt(model.getValueAt(i, 1).toString());
                     int bt = Integer.parseInt(model.getValueAt(i, 2).toString());
                     int prior = Integer.parseInt(model.getValueAt(i, 3).toString());
-
-                    if (!pidSet.add(pid)) {
-                        throw new IllegalArgumentException("Duplicate PID: " + pid);
-                    }
-                    if (at < 0) {
-                        throw new IllegalArgumentException("Arrival time must be >= 0 (PID=" + pid + ")");
-                    }
 
                     procList.add(new Proc(pid, at, bt, prior));
                 }
