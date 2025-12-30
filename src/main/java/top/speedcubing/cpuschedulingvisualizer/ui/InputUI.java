@@ -53,6 +53,10 @@ public class InputUI {
                     procList.add(new Proc(pid, at, bt, prior));
                 }
 
+                if (procList.isEmpty()) {
+                    throw new IllegalArgumentException("You must specify at least 1 process!");
+                }
+
                 SwingUtilities.invokeLater(() -> {
                     future.complete(new InputResult(procList, quantum));
                     frame.getContentPane().removeAll();
