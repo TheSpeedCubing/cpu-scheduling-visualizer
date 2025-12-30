@@ -1,4 +1,4 @@
-package top.speedcubing.os1718.ui;
+package top.speedcubing.cpuschedulingvisualizer.ui;
 
 import javax.swing.JFrame;
 

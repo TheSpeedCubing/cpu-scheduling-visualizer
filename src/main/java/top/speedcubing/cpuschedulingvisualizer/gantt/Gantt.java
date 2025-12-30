@@ -1,11 +1,11 @@
-package top.speedcubing.os1718.gantt;
+package top.speedcubing.cpuschedulingvisualizer.gantt;
 
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
-import top.speedcubing.os1718.process.Proc;
+import top.speedcubing.cpuschedulingvisualizer.process.Proc;
 
 @ToString
 @Getter

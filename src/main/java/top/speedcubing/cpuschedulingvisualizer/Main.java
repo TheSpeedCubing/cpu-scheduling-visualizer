@@ -1,17 +1,15 @@
-package top.speedcubing.os1718;
+package top.speedcubing.cpuschedulingvisualizer;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import top.speedcubing.os1718.algorithms.FCFS;
-import top.speedcubing.os1718.algorithms.Priority;
-import top.speedcubing.os1718.algorithms.RR;
-import top.speedcubing.os1718.algorithms.SJF;
-import top.speedcubing.os1718.algorithms.SRJF;
-import top.speedcubing.os1718.process.Proc;
-import top.speedcubing.os1718.ui.InputUI;
-import top.speedcubing.os1718.ui.MainUI;
-import top.speedcubing.os1718.ui.ResultUI;
+import top.speedcubing.cpuschedulingvisualizer.algorithms.FCFS;
+import top.speedcubing.cpuschedulingvisualizer.algorithms.Priority;
+import top.speedcubing.cpuschedulingvisualizer.algorithms.RR;
+import top.speedcubing.cpuschedulingvisualizer.algorithms.SJF;
+import top.speedcubing.cpuschedulingvisualizer.algorithms.SRJF;
+import top.speedcubing.cpuschedulingvisualizer.ui.InputUI;
+import top.speedcubing.cpuschedulingvisualizer.ui.MainUI;
+import top.speedcubing.cpuschedulingvisualizer.ui.ResultUI;
 
 public class Main {
     public static void main(String[] args) {

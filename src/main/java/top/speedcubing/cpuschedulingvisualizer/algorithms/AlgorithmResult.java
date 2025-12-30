@@ -1,12 +1,12 @@
-package top.speedcubing.os1718.algorithms;
+package top.speedcubing.cpuschedulingvisualizer.algorithms;
 
 import java.util.HashMap;
 import java.util.List;
 import lombok.Getter;
 import lombok.ToString;
-import top.speedcubing.os1718.gantt.Gantt;
-import top.speedcubing.os1718.process.Proc;
-import top.speedcubing.os1718.process.ProcResult;
+import top.speedcubing.cpuschedulingvisualizer.gantt.Gantt;
+import top.speedcubing.cpuschedulingvisualizer.process.Proc;
+import top.speedcubing.cpuschedulingvisualizer.process.ProcResult;
 
 @Getter
 @ToString

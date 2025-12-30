@@ -1,4 +1,4 @@
-package top.speedcubing.os1718.ui.input;
+package top.speedcubing.cpuschedulingvisualizer.ui.input;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter

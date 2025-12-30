@@ -1,4 +1,4 @@
-package top.speedcubing.os1718.ui;
+package top.speedcubing.cpuschedulingvisualizer.ui;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -14,10 +14,10 @@ import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.ui.RectangleAnchor;
 import org.jfree.chart.ui.RectangleInsets;
 import org.jfree.chart.ui.TextAnchor;
-import top.speedcubing.os1718.algorithms.AlgorithmResult;
-import top.speedcubing.os1718.gantt.Gantt;
-import top.speedcubing.os1718.ui.gantt.GanttChartStyler;
-import top.speedcubing.os1718.ui.gantt.GanttDatasetBuilder;
+import top.speedcubing.cpuschedulingvisualizer.algorithms.AlgorithmResult;
+import top.speedcubing.cpuschedulingvisualizer.gantt.Gantt;
+import top.speedcubing.cpuschedulingvisualizer.ui.gantt.GanttChartStyler;
+import top.speedcubing.cpuschedulingvisualizer.ui.gantt.GanttDatasetBuilder;
 
 public class GanttChartUI extends ChartPanel {
 

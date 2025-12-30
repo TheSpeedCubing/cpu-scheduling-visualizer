@@ -1,4 +1,4 @@
-package top.speedcubing.os1718.algorithms;
+package top.speedcubing.cpuschedulingvisualizer.algorithms;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
-import top.speedcubing.os1718.process.Proc;
+import top.speedcubing.cpuschedulingvisualizer.process.Proc;
 
 public class SRJF extends Algorithm {
 

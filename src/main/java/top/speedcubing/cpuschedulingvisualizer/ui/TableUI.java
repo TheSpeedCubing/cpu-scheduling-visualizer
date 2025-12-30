@@ -1,11 +1,11 @@
-package top.speedcubing.os1718.ui;
+package top.speedcubing.cpuschedulingvisualizer.ui;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import lombok.Getter;
-import top.speedcubing.os1718.algorithms.AlgorithmResult;
-import top.speedcubing.os1718.process.Proc;
+import top.speedcubing.cpuschedulingvisualizer.algorithms.AlgorithmResult;
+import top.speedcubing.cpuschedulingvisualizer.process.Proc;
 
 @Getter
 public class TableUI extends JScrollPane {

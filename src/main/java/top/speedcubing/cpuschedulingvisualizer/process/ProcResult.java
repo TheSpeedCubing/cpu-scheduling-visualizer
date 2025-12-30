@@ -1,4 +1,4 @@
-package top.speedcubing.os1718.process;
+package top.speedcubing.cpuschedulingvisualizer.process;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,20 +1,18 @@
-package top.speedcubing.os1718.ui;
+package top.speedcubing.cpuschedulingvisualizer.ui;
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
 import lombok.AllArgsConstructor;
-import top.speedcubing.os1718.process.Proc;
-import top.speedcubing.os1718.ui.input.ControlPanel;
-import top.speedcubing.os1718.ui.input.PastePanel;
-import top.speedcubing.os1718.ui.input.ProcTablePanel;
+import top.speedcubing.cpuschedulingvisualizer.process.Proc;
+import top.speedcubing.cpuschedulingvisualizer.ui.input.ControlPanel;
+import top.speedcubing.cpuschedulingvisualizer.ui.input.PastePanel;
+import top.speedcubing.cpuschedulingvisualizer.ui.input.ProcTablePanel;
 
 @AllArgsConstructor
 public class InputUI {

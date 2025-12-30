@@ -1,4 +1,4 @@
-package top.speedcubing.os1718.ui.gantt;
+package top.speedcubing.cpuschedulingvisualizer.ui.gantt;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.TreeMap;
 import lombok.Getter;
 import org.jfree.data.xy.DefaultXYDataset;
-import top.speedcubing.os1718.algorithms.AlgorithmResult;
-import top.speedcubing.os1718.gantt.Gantt;
+import top.speedcubing.cpuschedulingvisualizer.algorithms.AlgorithmResult;
+import top.speedcubing.cpuschedulingvisualizer.gantt.Gantt;
 
 @Getter
 public class GanttDatasetBuilder {

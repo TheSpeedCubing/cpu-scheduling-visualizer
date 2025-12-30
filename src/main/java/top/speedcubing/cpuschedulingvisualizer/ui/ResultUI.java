@@ -1,10 +1,10 @@
-package top.speedcubing.os1718.ui;
+package top.speedcubing.cpuschedulingvisualizer.ui;
 
 import javax.swing.JFrame;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import top.speedcubing.os1718.algorithms.AlgorithmResult;
-import top.speedcubing.os1718.ui.output.AlgorithmTabsPanel;
+import top.speedcubing.cpuschedulingvisualizer.algorithms.AlgorithmResult;
+import top.speedcubing.cpuschedulingvisualizer.ui.output.AlgorithmTabsPanel;
 
 @Getter
 @AllArgsConstructor

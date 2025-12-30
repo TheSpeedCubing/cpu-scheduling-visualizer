@@ -1,4 +1,4 @@
-package top.speedcubing.os1718.algorithms;
+package top.speedcubing.cpuschedulingvisualizer.algorithms;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import top.speedcubing.os1718.process.Proc;
+import top.speedcubing.cpuschedulingvisualizer.process.Proc;
 
 public class RR extends Algorithm {
 

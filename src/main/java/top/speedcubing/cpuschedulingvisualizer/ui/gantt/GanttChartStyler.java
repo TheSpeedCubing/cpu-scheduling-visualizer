@@ -1,16 +1,14 @@
-package top.speedcubing.os1718.ui.gantt;
+package top.speedcubing.cpuschedulingvisualizer.ui.gantt;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.util.List;
-import org.jfree.chart.ChartMouseListener;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.SymbolAxis;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
-import top.speedcubing.os1718.process.Proc;
-import top.speedcubing.os1718.ui.GanttChartUI;
+import top.speedcubing.cpuschedulingvisualizer.process.Proc;
 
 public class GanttChartStyler {
 

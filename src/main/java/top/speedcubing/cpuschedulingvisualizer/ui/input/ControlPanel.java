@@ -1,4 +1,4 @@
-package top.speedcubing.os1718.ui.input;
+package top.speedcubing.cpuschedulingvisualizer.ui.input;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;

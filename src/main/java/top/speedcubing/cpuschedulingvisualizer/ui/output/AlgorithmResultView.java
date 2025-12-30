@@ -1,9 +1,9 @@
-package top.speedcubing.os1718.ui.output;
+package top.speedcubing.cpuschedulingvisualizer.ui.output;
 
 import javax.swing.JSplitPane;
-import top.speedcubing.os1718.algorithms.AlgorithmResult;
-import top.speedcubing.os1718.ui.GanttChartUI;
-import top.speedcubing.os1718.ui.TableUI;
+import top.speedcubing.cpuschedulingvisualizer.algorithms.AlgorithmResult;
+import top.speedcubing.cpuschedulingvisualizer.ui.GanttChartUI;
+import top.speedcubing.cpuschedulingvisualizer.ui.TableUI;
 
 public class AlgorithmResultView extends JSplitPane {
 

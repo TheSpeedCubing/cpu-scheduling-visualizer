@@ -1,7 +1,7 @@
-package top.speedcubing.os1718.ui.output;
+package top.speedcubing.cpuschedulingvisualizer.ui.output;
 
 import javax.swing.JTabbedPane;
-import top.speedcubing.os1718.algorithms.AlgorithmResult;
+import top.speedcubing.cpuschedulingvisualizer.algorithms.AlgorithmResult;
 
 public class AlgorithmTabsPanel extends JTabbedPane {
 

@@ -1,4 +1,4 @@
-package top.speedcubing.os1718.ui.input;
+package top.speedcubing.cpuschedulingvisualizer.ui.input;
 
 import java.awt.Font;
 import javax.swing.BorderFactory;

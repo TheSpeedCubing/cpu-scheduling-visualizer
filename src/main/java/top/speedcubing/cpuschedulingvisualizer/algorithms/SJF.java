@@ -1,7 +1,7 @@
-package top.speedcubing.os1718.algorithms;
+package top.speedcubing.cpuschedulingvisualizer.algorithms;
 
 import java.util.Comparator;
-import top.speedcubing.os1718.process.Proc;
+import top.speedcubing.cpuschedulingvisualizer.process.Proc;
 
 public class SJF extends Priority {
 
