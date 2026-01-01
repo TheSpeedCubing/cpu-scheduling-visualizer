@@ -7,7 +7,7 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import top.speedcubing.cpuschedulingvisualizer.process.Proc;
+import top.speedcubing.cpuschedulingvisualizer.model.Proc;
 
 public class RR extends Algorithm {
 
@@ -27,10 +27,8 @@ public class RR extends Algorithm {
         List<Proc> pending = new ArrayList<>(procList);
         pending.sort(Comparator.comparingInt(Proc::getTimeArrival));
 
-        // ready queue (FIFO)
         Deque<Proc> ready = new ArrayDeque<>();
 
-        // remaining burst time
         Map<Proc, Integer> remaining = new HashMap<>();
         for (Proc p : procList) remaining.put(p, p.getBurstTime());
 

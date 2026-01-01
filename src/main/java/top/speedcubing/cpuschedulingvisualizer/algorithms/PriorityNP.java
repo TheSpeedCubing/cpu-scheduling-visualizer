@@ -3,19 +3,19 @@ package top.speedcubing.cpuschedulingvisualizer.algorithms;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import top.speedcubing.cpuschedulingvisualizer.process.Proc;
+import top.speedcubing.cpuschedulingvisualizer.model.Proc;
 
-public class Priority extends Algorithm {
+public class PriorityNP extends Algorithm {
 
     private final Comparator<Proc> comparator;
 
-    public Priority() {
-        this("Priority", Comparator
+    public PriorityNP() {
+        this("Priority (non-preemptive)", Comparator
                 .comparingInt(Proc::getPriority)
                 .thenComparingInt(Proc::getTimeArrival));
     }
 
-    public Priority(String name, Comparator<Proc> comparator) {
+    public PriorityNP(String name, Comparator<Proc> comparator) {
         super(name);
         this.comparator = comparator;
     }
@@ -56,12 +56,12 @@ public class Priority extends Algorithm {
             ready.sort(comparator);
             Proc p = ready.remove(0);
 
-// update times
+            // update times
             int start = time;
             int finish = start + p.getBurstTime();
             time = finish;
 
-// update state
+            // update state
             result.getGantt().addProcState(p, start, finish);
 
             result.getProcResult(p).setWaitTime(start - p.getTimeArrival());

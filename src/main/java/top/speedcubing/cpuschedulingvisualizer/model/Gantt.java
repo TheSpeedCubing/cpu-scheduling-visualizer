@@ -1,13 +1,10 @@
-package top.speedcubing.cpuschedulingvisualizer.gantt;
+package top.speedcubing.cpuschedulingvisualizer.model;
 
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.ToString;
-import top.speedcubing.cpuschedulingvisualizer.process.Proc;
 
-@ToString
 @Getter
 public class Gantt {
 
@@ -17,7 +14,6 @@ public class Gantt {
         procState.add(new GanttProcState(proc, startTime, stopTime));
     }
 
-    @ToString
     @Getter
     @AllArgsConstructor
     public static class GanttProcState {

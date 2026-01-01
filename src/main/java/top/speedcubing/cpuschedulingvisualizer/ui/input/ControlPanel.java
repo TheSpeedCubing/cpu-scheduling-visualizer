@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 public class ControlPanel extends JPanel {
 
     public final JButton parseBtn = new JButton("Bulk Input →");
-    public final JButton runBtn   = new JButton("Run");
+    public final JButton runBtn = new JButton("Run");
 
     public final JTextField quantumField = new JTextField("20", 4);
 

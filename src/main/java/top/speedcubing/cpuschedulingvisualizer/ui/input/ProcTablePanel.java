@@ -21,7 +21,7 @@ public class ProcTablePanel extends JScrollPane {
 
     public ProcTablePanel(JFrame frame) {
         this.frame = frame;
-        model = new DefaultTableModel(
+        this.model = new DefaultTableModel(
                 new String[]{"PID", "Arrival", "Burst", "Priority"}, 0
         );
 
@@ -55,11 +55,11 @@ public class ProcTablePanel extends JScrollPane {
                 // let it mutable
                 List<String> list = new ArrayList<>(Arrays.stream(line.split("\\s+")).toList());
 
-                if(list.size() < 3) {
+                if (list.size() < 3) {
                     throw new IllegalArgumentException("Missing arguments at " + lineNumber + ":" + textLength);
                 }
 
-                if(list.size() > 4) {
+                if (list.size() > 4) {
                     throw new IllegalArgumentException("Exceeding arguments at " + lineNumber + ":" + textLength);
                 }
 
@@ -83,5 +83,4 @@ public class ProcTablePanel extends JScrollPane {
             JOptionPane.showMessageDialog(frame, ex.getMessage(), "Invalid data", JOptionPane.ERROR_MESSAGE);
         }
     }
-
 }

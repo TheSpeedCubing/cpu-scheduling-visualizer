@@ -15,9 +15,9 @@ import org.jfree.chart.ui.RectangleAnchor;
 import org.jfree.chart.ui.RectangleInsets;
 import org.jfree.chart.ui.TextAnchor;
 import top.speedcubing.cpuschedulingvisualizer.algorithms.AlgorithmResult;
-import top.speedcubing.cpuschedulingvisualizer.gantt.Gantt;
-import top.speedcubing.cpuschedulingvisualizer.ui.gantt.GanttChartStyler;
-import top.speedcubing.cpuschedulingvisualizer.ui.gantt.GanttDatasetBuilder;
+import top.speedcubing.cpuschedulingvisualizer.model.Gantt;
+import top.speedcubing.cpuschedulingvisualizer.ui.output.GanttChartStyler;
+import top.speedcubing.cpuschedulingvisualizer.application.gantt.GanttDatasetBuilder;
 
 public class GanttChartUI extends ChartPanel {
 

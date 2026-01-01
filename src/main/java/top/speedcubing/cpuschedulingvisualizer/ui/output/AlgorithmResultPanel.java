@@ -5,9 +5,9 @@ import top.speedcubing.cpuschedulingvisualizer.algorithms.AlgorithmResult;
 import top.speedcubing.cpuschedulingvisualizer.ui.GanttChartUI;
 import top.speedcubing.cpuschedulingvisualizer.ui.TableUI;
 
-public class AlgorithmResultView extends JSplitPane {
+public class AlgorithmResultPanel extends JSplitPane {
 
-    public AlgorithmResultView(AlgorithmResult result) {
+    public AlgorithmResultPanel(AlgorithmResult result) {
         super(JSplitPane.VERTICAL_SPLIT,
                 new GanttChartUI(result),
                 new TableUI(result));

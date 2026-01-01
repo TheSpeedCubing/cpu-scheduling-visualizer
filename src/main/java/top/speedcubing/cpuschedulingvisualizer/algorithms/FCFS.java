@@ -2,7 +2,7 @@ package top.speedcubing.cpuschedulingvisualizer.algorithms;
 
 import java.util.Comparator;
 import java.util.List;
-import top.speedcubing.cpuschedulingvisualizer.process.Proc;
+import top.speedcubing.cpuschedulingvisualizer.model.Proc;
 
 public class FCFS extends Algorithm {
 

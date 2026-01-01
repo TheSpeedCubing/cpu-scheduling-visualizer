@@ -1,9 +1,9 @@
 package top.speedcubing.cpuschedulingvisualizer.algorithms;
 
 import java.util.Comparator;
-import top.speedcubing.cpuschedulingvisualizer.process.Proc;
+import top.speedcubing.cpuschedulingvisualizer.model.Proc;
 
-public class SJF extends Priority {
+public class SJF extends PriorityNP {
 
     // it's priority algorithm aswell
     public SJF() {

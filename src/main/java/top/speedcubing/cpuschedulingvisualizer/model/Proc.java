@@ -1,15 +1,13 @@
-package top.speedcubing.cpuschedulingvisualizer.process;
+package top.speedcubing.cpuschedulingvisualizer.model;
 
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 
 @Getter
 @RequiredArgsConstructor
 @AllArgsConstructor
-@ToString
 public class Proc {
 
     private final int id;

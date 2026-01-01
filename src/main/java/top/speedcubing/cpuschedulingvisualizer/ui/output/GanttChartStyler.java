@@ -1,4 +1,4 @@
-package top.speedcubing.cpuschedulingvisualizer.ui.gantt;
+package top.speedcubing.cpuschedulingvisualizer.ui.output;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -8,7 +8,7 @@ import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.SymbolAxis;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
-import top.speedcubing.cpuschedulingvisualizer.process.Proc;
+import top.speedcubing.cpuschedulingvisualizer.model.Proc;
 
 public class GanttChartStyler {
 
