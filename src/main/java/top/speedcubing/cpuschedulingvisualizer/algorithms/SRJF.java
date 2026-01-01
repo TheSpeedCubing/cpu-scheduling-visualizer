@@ -18,7 +18,7 @@ public class SRJF extends Algorithm {
         AlgorithmResult result = createResult(procList);
 
         List<Proc> pending = new ArrayList<>(procList);
-        pending.sort(Comparator.comparingInt(Proc::getTimeArrival).thenComparingInt(Proc::getId));
+        pending.sort(Comparator.comparingInt(Proc::getTimeArrival));
 
         Map<Proc, Integer> rem = new HashMap<>();
         for (Proc p : procList) rem.put(p, p.getBurstTime());

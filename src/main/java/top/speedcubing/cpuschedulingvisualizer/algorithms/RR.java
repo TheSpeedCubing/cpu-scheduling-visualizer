@@ -25,7 +25,7 @@ public class RR extends Algorithm {
         Map<Proc, Integer> completion = new HashMap<>();
 
         List<Proc> pending = new ArrayList<>(procList);
-        pending.sort(Comparator.comparingInt(Proc::getTimeArrival).thenComparingInt(Proc::getId));
+        pending.sort(Comparator.comparingInt(Proc::getTimeArrival));
 
         // ready queue (FIFO)
         Deque<Proc> ready = new ArrayDeque<>();
