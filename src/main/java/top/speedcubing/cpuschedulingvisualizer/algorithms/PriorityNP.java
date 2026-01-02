@@ -12,7 +12,7 @@ public class PriorityNP extends Algorithm {
     public PriorityNP() {
         this("Priority (non-preemptive)", Comparator
                 .comparingInt(Proc::getPriority)
-                .thenComparingInt(Proc::getTimeArrival));
+                .thenComparing(TieBreaker.FCFS));
     }
 
     public PriorityNP(String name, Comparator<Proc> comparator) {

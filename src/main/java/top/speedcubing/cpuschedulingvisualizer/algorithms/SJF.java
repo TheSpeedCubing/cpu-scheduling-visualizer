@@ -7,6 +7,9 @@ public class SJF extends PriorityNP {
 
     // it's priority algorithm aswell
     public SJF() {
-        super("SJF", Comparator.comparingInt(Proc::getBurstTime));
+        super("SJF", Comparator
+                .comparingInt(Proc::getBurstTime)
+                .thenComparing(TieBreaker.FCFS)
+        );
     }
 }

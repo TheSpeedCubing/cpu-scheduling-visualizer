@@ -10,7 +10,7 @@ public class PriorityP extends Algorithm {
     public PriorityP() {
         this("Priority (preemptive)", Comparator
                 .comparingInt(Proc::getPriority)
-                .thenComparingInt(Proc::getTimeArrival));
+                .thenComparing(TieBreaker.FCFS));
     }
 
     public PriorityP(String name, Comparator<Proc> comparator) {
