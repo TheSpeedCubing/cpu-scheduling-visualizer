@@ -13,6 +13,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -28,8 +31,12 @@ jobs:
         chmod +x ./build.sh
         ./build.sh
 
-    - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v4
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
       with:
-        name: build-output
-        path: ./target/cpuschedulingvisualizer-1.0-SNAPSHOT.jar
+        tag_name: latest
+        name: Latest Build
+        files: |
+          ./target/cpuschedulingvisualizer-1.0-SNAPSHOT.jar
+        draft: false
+        prerelease: false
