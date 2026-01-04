@@ -50,6 +50,10 @@ public class InputController {
             List<AlgorithmResult> results =
                     scheduler.runAll(procList, quantum);
 
+            while (mainUI.getTab().getTabCount() != 1) {
+                mainUI.getTab().remove(1);
+            }
+
             for(AlgorithmResult r : results) {
                 mainUI.getTab().add(r.getAlgorithm().getName(),
                         new AlgorithmResultPanel(r));
