@@ -10,7 +10,7 @@ public class PastePanel extends JScrollPane {
     private final JTextArea area = new JTextArea();
 
     public PastePanel() {
-        area.setBorder(BorderFactory.createTitledBorder("Paste processes here"));
+        area.setBorder(BorderFactory.createTitledBorder("Paste processes here (<pid> <at> <bt> <priority (optional)>)"));
         setViewportView(area);
     }
 
